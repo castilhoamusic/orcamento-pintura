@@ -105,6 +105,7 @@ input[type=color]{width:100%;height:46px;border:1px solid #cdd3da;border-radius:
     </div>
     <span class="badge" id="demoBadge" data-t="demoBadge"></span>
   </header>
+  <a class="btn primary block" id="buyTop" target="_blank" rel="noopener" style="display:none"></a>
 
   <div class="warn" id="storWarn" data-t="storageWarn"></div>
 
@@ -207,7 +208,7 @@ var CONFIG = {
   lang: 'pt',
   locale: 'pt-BR',
   currency: 'BRL',
-  buyUrl: '',                       // cole aqui o link de compra (Hotmart/Kiwify)
+  buyUrl: 'https://pay.hotmart.com/G108464862E',  // link de compra (Hotmart)
   storageKey: 'orcpintura_v1',
   jsPdfUrls: [
     'https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js',
@@ -289,6 +290,7 @@ var L = { pt: {
   paywallBody: 'Esta demonstração calcula 1 ambiente por orçamento e marca o PDF como demonstração.',
   paywallList: ['Quantos ambientes quiser no mesmo orçamento', 'PDF limpo, sem a marca de demonstração', 'Pagamento único, sem mensalidade'],
   paywallBuy: 'Quero a versão completa',
+  buyTop: 'Comprar versão completa · R$ 27 (pagamento único)',
   paywallNoLink: 'Peça o link da versão completa a quem te enviou esta demonstração.',
   close: 'Fechar',
   resTitle: 'PDF pronto',
@@ -966,6 +968,7 @@ function wire() {
    ===================================================================== */
 applyTexts();
 $('#demoBadge').style.display = CONFIG.demo ? '' : 'none';
+(function(){var b=$('#buyTop');if(CONFIG.demo&&CONFIG.buyUrl){b.href=CONFIG.buyUrl;b.textContent=T('buyTop');b.style.display='';}})();
 fillInputs();
 wire();
 setupPwa();
